@@ -91,11 +91,11 @@
     </style>
 </head>
 <body>
-    <!--<div id="counter">0</div>
+    <div id="counter">0</div>
     <button id="clickButton1">&#9776 Vampire &#9776</button>
-    <button id="clickButton2">&#9776 поп &#9776</button>
-    <button id="clickButton3">&#9776 поп &#9776</button>
-    <button id="clickButton4">&#9776 поп &#9776</button>-->
+    <button id="clickButton2">&#9776 Moss &#9776</button>
+    <button id="clickButton3">&#9776 Sandbox &#9776</button>
+    <button id="clickButton4">&#9776 Concrete &#9776</button>
     <button class="cb1" id="cb1"
         onclick="window.location.href = 'https://takizovi.github.io/vampire/';">
         &#9776 Vampire &#9776
@@ -117,21 +117,23 @@
     </button>
     
     <script>
-        let counter = 0;
+        //let counter = 0;
 
-        const counterElement = document.getElementById('counter');
+        //const counterElement = document.getElementById('counter');
         const button1Element = document.getElementById('clickButton1');
         const button2Element = document.getElementById('clickButton2');
 
         button1Element.addEventListener('click', (event) => {
-            counter++;
-            counterElement.textContent = "Sosal1";
+            location.href = "vampire.html";
+            //counter++;
+            //counterElement.textContent = "Sosal1";
             //createParticles(event.clientX, event.clientY);
         });
 
         button2Element.addEventListener('click', (event) => {
-            counter++;
-            counterElement.textContent = "Sosal2";
+            location.href = "moss.html";
+            //counter++;
+            //counterElement.textContent = "Sosal2";
             //createParticles(event.clientX, event.clientY);
         });
         /*function createParticles(x, y) {
