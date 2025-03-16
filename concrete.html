@@ -1,61 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Concrete</title>
     <style>
         body {
-            font-family: Impact, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 40vh;
-            margin: 0;
-            background-color: #ffffff;
-            overflow: hidden;
-            position: relative;
+            min-height: 100vh;
+            background-color: #f4f4f4;
         }
-        #counter {
-            font-size: 2em;
-            margin: 20px;
-        }
-        #cb1 {
-            margin-bottom: 1rem;
-            font-size: 1.5em;
-            padding: 10px 20px;
-            background-color: #525252;
+        .button {
+            display: block;
+            width: 200px;
+            padding: 15px;
+            margin: 10px;
+            text-align: center;
+            font-size: 18px;
             color: white;
+            background-color: #007BFF;
             border: none;
-            border-radius: 50px;
+            border-radius: 5px;
             cursor: pointer;
-            position: relative;
-            z-index: 1;
-            font-family: Impact, sans-serif;
+            text-decoration: none;
         }
-        
-        #clickButton:hover {
-            background-color: #45a049;
+        .button:hover {
+            background-color: #0056b3;
         }
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 1;
-            pointer-events: none;
+        .text-content {
+            max-width: 800px;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            margin-top: 20px;
+            text-align: left;
         }
-
-    
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            max-width: 820px;
+            margin-top: 20px;
+        }
+        .gallery img {
+            height: 225px;
+            width: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body>
-    <button class="cb1" id="cb1"
-        onclick="window.location.href = 'https://github.com/takizovi/poch/raw/refs/heads/main/ConcreteSetup.exe';">
-        &#9776 Play &#9776
-    </button>
-
+    <a href="https://github.com/takizovi/poch/raw/refs/heads/main/ConcreteSetup.exe" class="button">Скачать</a>
+    <div class="text-content" id="text-content">Загрузка текста...</div>
+    <div class="gallery" id="gallery"></div>
+    
     <script>
-        
+        document.addEventListener("DOMContentLoaded", function() {
+            const repo = "takizovi/tkzv"; //репозиторий
+            const imagesPath = "concrete"; //путь к папке с изображениями
+            const textFilePath = "concrete/text.txt"; //путь к текстовому файлу
+            
+            // Загрузка текста
+            fetch(`https://raw.githubusercontent.com/${repo}/main/${textFilePath}`)
+                .then(response => response.text())
+                .then(text => {
+                    document.getElementById("text-content").innerText = text;
+                })
+                .catch(err => console.error("Ошибка загрузки текста", err));
+            
+            // Загрузка изображений
+            fetch(`https://api.github.com/repos/${repo}/contents/${imagesPath}`)
+                .then(response => response.json())
+                .then(files => {
+                    let gallery = document.getElementById("gallery");
+                    files.forEach(file => {
+                        if (file.name.match(/\.(jpg|jpeg|png|gif)$/i)) {
+                            let img = document.createElement("img");
+                            img.src = file.download_url;
+                            gallery.appendChild(img);
+                        }
+                    });
+                })
+                .catch(err => console.error("Ошибка загрузки изображений", err));
+        });
     </script>
 </body>
 </html>
