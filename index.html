@@ -17,11 +17,11 @@
             overflow: hidden;
             position: relative;
         }
-        #counter {
+        /*#counter {
             font-size: 2em;
             margin: 20px;
-        }
-        #cb1 {
+        }*/
+        #clickButton1 {
             margin-bottom: 1rem;
             font-size: 1.5em;
             padding: 10px 20px;
@@ -35,7 +35,7 @@
             font-family: Impact, sans-serif;
         }
 
-        #cb2 {
+        #clickButton2 {
             margin-bottom: 1rem;
             font-size: 1.5em;
             padding: 10px 20px;
@@ -49,7 +49,7 @@
             font-family: Impact, sans-serif;
         }
 
-        #cb3 {
+        #clickButton3 {
             margin-bottom: 1rem;
             font-size: 1.5em;
             padding: 10px 20px;
@@ -63,7 +63,7 @@
             font-family: Impact, sans-serif;
         }
 
-        #cb4 {
+        #clickButton4 {
             margin-bottom: 1rem;
             font-size: 1.5em;
             padding: 10px 20px;
@@ -91,12 +91,12 @@
     </style>
 </head>
 <body>
-    <div id="counter">0</div>
+    <!--<div id="counter">0</div>-->
     <button id="clickButton1">&#9776 Vampire &#9776</button>
     <button id="clickButton2">&#9776 Moss &#9776</button>
     <button id="clickButton3">&#9776 Sandbox &#9776</button>
     <button id="clickButton4">&#9776 Concrete &#9776</button>
-    <button class="cb1" id="cb1"
+    <!--<button class="cb1" id="cb1"
         onclick="window.location.href = 'https://takizovi.github.io/vampire/';">
         &#9776 Vampire &#9776
     </button>
@@ -114,7 +114,7 @@
     <button class="cb4" id="cb4"
         onclick="window.location.href = 'https://github.com/takizovi/poch/raw/refs/heads/main/ConcreteSetup.exe';">
         &#9776 Concrete &#9776
-    </button>
+    </button>-->
     
     <script>
         //let counter = 0;
@@ -122,6 +122,8 @@
         //const counterElement = document.getElementById('counter');
         const button1Element = document.getElementById('clickButton1');
         const button2Element = document.getElementById('clickButton2');
+        const button3Element = document.getElementById('clickButton3');
+        const button4Element = document.getElementById('clickButton4');
 
         button1Element.addEventListener('click', (event) => {
             location.href = "vampire.html";
@@ -132,6 +134,20 @@
 
         button2Element.addEventListener('click', (event) => {
             location.href = "moss.html";
+            //counter++;
+            //counterElement.textContent = "Sosal2";
+            //createParticles(event.clientX, event.clientY);
+        });
+
+        button3Element.addEventListener('click', (event) => {
+            location.href = "sandbox.html";
+            //counter++;
+            //counterElement.textContent = "Sosal2";
+            //createParticles(event.clientX, event.clientY);
+        });
+
+        button4Element.addEventListener('click', (event) => {
+            location.href = "concrete.html";
             //counter++;
             //counterElement.textContent = "Sosal2";
             //createParticles(event.clientX, event.clientY);
